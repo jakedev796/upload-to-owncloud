@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Owncloud Uploader Settings</title>
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        label { display: block; margin-top: 10px; }
+        input, select { width: 100%; margin-bottom: 10px; padding: 5px; }
+        #status, #folderStatus { margin-top: 10px; }
+        #folderSection { display: none; margin-top: 20px; }
+        #folderBrowser { border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+        .folder {
+            cursor: pointer;
+            padding: 8px;
+            margin: 2px 0;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        .folder:hover {
+            background-color: #e0e0e0;
+        }
+        .back-folder {
+            background-color: #f0f0f0;
+            font-style: italic;
+        }
+        .no-folders {
+            font-style: italic;
+            color: #666;
+        }
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 10px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<h2>Owncloud Uploader Settings</h2>
+
+<label for="serverURL">Server URL:</label>
+<input type="url" id="serverURL" placeholder="https://your-owncloud-server.com">
+
+<label for="username">Username:</label>
+<input type="text" id="username">
+
+<label for="password">Password:</label>
+<input type="password" id="password">
+
+<div class="checkbox-container">
+    <input type="checkbox" id="copyUrlToClipboard">
+    <label for="copyUrlToClipboard">Copy URL to clipboard after upload</label>
+</div>
+
+<button id="save">Save and Test Connection</button>
+
+<div id="status"></div>
+
+<div id="folderSection">
+    <h3>Select Upload Folder</h3>
+    <div id="folderBrowser">
+        <div id="currentPath"></div>
+        <div id="folderList"></div>
+    </div>
+    <button id="saveFolder">Save Selected Folder</button>
+    <div id="folderStatus"></div>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
