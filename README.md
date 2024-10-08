@@ -1,4 +1,4 @@
-# Owncloud Uploader Firefox Extension
+# Upload to Owncloud - Firefox Extension
 
 This Firefox extension allows you to easily upload media files to your Owncloud instance directly from your browser.
 
