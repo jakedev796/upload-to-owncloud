@@ -18,12 +18,12 @@
     "browser_style": true
   },
   "icons": {
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "48": "icon48.png",
+    "128": "icon128.png"
   },
   "applications": {
     "gecko": {
-      "id": "owncloud-uploader@example.com",
+      "id": "jake@shreves.dev",
       "strict_min_version": "68.0"
     }
   }

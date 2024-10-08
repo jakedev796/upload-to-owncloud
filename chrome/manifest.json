@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Upload to Owncloud",
+  "version": "1.0",
+  "description": "Upload media files to your Owncloud instance directly from your browser.",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png"
+    },
+    "default_title": "Upload to Owncloud"
+  }
+}
