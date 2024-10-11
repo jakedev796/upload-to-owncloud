@@ -33,6 +33,27 @@ function generateUniqueFilename(originalFilename) {
     return `${nameWithoutExtension}_${timestamp}_${randomString}.${fileExtension}`;
 }
 
+// Add webRequest listener to modify headers for Pixiv requests
+browser.webRequest.onBeforeSendHeaders.addListener(
+    (details) => {
+        if (details.url.includes('pximg.net')) {
+            let hasReferer = details.requestHeaders.some(h => h.name.toLowerCase() === "referer");
+            if (!hasReferer) {
+                details.requestHeaders.push({ name: "Referer", value: "https://www.pixiv.net/" });
+            }
+        }
+        return { requestHeaders: details.requestHeaders };
+    },
+    { urls: ["*://*.pximg.net/*"] },
+    ["blocking", "requestHeaders"]
+);
+
+async function fetchWithPixivHeader(url) {
+    // The webRequest listener will handle adding the Referer header
+    const response = await fetch(url);
+    return response;
+}
+
 browser.contextMenus.onClicked.addListener(async (info, tab) => {
     if (info.menuItemId === "uploadToOwncloud") {
         const mediaURL = info.srcUrl;
@@ -48,8 +69,8 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
                     return;
                 }
 
-                // Fetch the media directly
-                const response = await fetch(mediaURL);
+                // Fetch the media with pixiv header if necessary
+                const response = await fetchWithPixivHeader(mediaURL);
                 const blob = await response.blob();
                 let originalFilename = mediaURL.split("/").pop().split("?")[0];  // Get the filename without query params
 

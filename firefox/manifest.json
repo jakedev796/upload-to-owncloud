@@ -7,7 +7,9 @@
     "contextMenus",
     "activeTab",
     "notifications",
-    "<all_urls>"
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking"
   ],
   "background": {
     "scripts": ["background.js"],
@@ -23,7 +25,7 @@
   },
   "applications": {
     "gecko": {
-      "id": "jake@shreves.dev",
+      "id": "R0Wht9P8h7@upload-to-owncloud",
       "strict_min_version": "68.0"
     }
   }
